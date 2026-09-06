@@ -25,8 +25,8 @@ RE_SAFE = re.compile(
     r".{0,12000}?(?=(?:Item \d|EX-|Exhibit \d|SIGNATURE|About [A-Z]|Contacts?:|###|$))", re.S | re.I)
 RE_EXIDX = re.compile(r"Item 9\.01[^A-Za-z]{0,20}Financial Statements and Exhibits"
                       r".{0,2000}?(?=(?:SIGNATURE|EX-|Exhibit 99|$))", re.S | re.I)
-RE_TAIL = re.compile(r"(SIGNATURES?\s+Pursuant to the requirements of the Securities Exchange Act.*)$",
-                     re.S | re.I)
+RE_TAIL = re.compile(r"SIGNATURES?\s+Pursuant to the requirements of the Securities Exchange Act"
+                     r".{0,3000}?(?=(?:EX-|Exhibit\s?99|Item \d|$))", re.S | re.I)
 
 def clean_filing_text(t):
     if not isinstance(t, str):
