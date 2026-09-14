@@ -85,7 +85,7 @@ def convert(path):
 
     def close_tools():
         if state["open_tools"]:
-            out.append("\n</details>\n")
+            out.append("\n\n</details>\n")
             state["open_tools"], state["msg"] = False, None
 
     def day_break(when):
@@ -190,9 +190,9 @@ def convert(path):
         "# Claude Code session transcript\n",
         "*Session:* %s — Claude Code desktop app (Code tab), model Opus 5  " % (titles[-1] if titles else sid),
         "*Session ID:* `%s`  " % sid,
-        "*Span:* %s to %s (Sydney time)  " % (min(stamps).strftime("%d %B %Y %H:%M"),
-                                             max(stamps).strftime("%d %B %Y %H:%M")),
-        "*Converted* on %s from the local session record by `export_claude_session.py`. Every prompt "
+        "*Span:* %s to %s (Sydney time)  " % (min(stamps).strftime("%d %B %Y %H:%M").lstrip("0"),
+                                             max(stamps).strftime("%d %B %Y %H:%M").lstrip("0")),
+        "*Converted on %s from the local session record by `export_claude_session.py`. Every prompt "
         "and every reply is included verbatim and unedited. As the AI-use guidance anticipates, tool "
         "output and the model's internal reasoning are omitted, and each tool call is listed by name. "
         "Background-task notifications and automatic app messages are shown as quoted markers so the "
