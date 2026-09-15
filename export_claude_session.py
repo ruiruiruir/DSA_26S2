@@ -23,6 +23,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo("Australia/Sydney")
+SURFACE_DEFAULT = "Claude Code desktop app (Code tab)"
 PROJECT_DIR = os.path.expanduser("~/.claude/projects/C--Users-Nebula-PC-code-DSA-26S2")
 
 RE_SYSREM = re.compile(r"<system-reminder>.*?</system-reminder>", re.S)
@@ -66,7 +67,7 @@ def notification_line(raw, when):
             % (when.strftime("%H:%M"), ", ".join(ids) or "?", " ".join(body.split()), tail))
 
 
-def convert(path):
+def convert(path, title=None, surface=SURFACE_DEFAULT):
     rows = [json.loads(l) for l in open(path, encoding="utf-8") if l.strip()]
 
     def human_text(r):
@@ -188,11 +189,11 @@ def convert(path):
     sid = os.path.splitext(os.path.basename(path))[0]
     head = [
         "# Claude Code session transcript\n",
-        "*Session:* %s — Claude Code desktop app (Code tab), model Opus 5  " % (titles[-1] if titles else sid),
+        "*Session:* %s — %s, model Opus 5  " % (title or (titles[-1] if titles else sid), surface),
         "*Session ID:* `%s`  " % sid,
         "*Span:* %s to %s (Sydney time)  " % (min(stamps).strftime("%d %B %Y %H:%M").lstrip("0"),
                                              max(stamps).strftime("%d %B %Y %H:%M").lstrip("0")),
-        "*Converted on %s from the local session record by `export_claude_session.py`. Every prompt "
+        "*Converted on %s from the session record by `export_claude_session.py`. Every prompt "
         "and every reply is included verbatim and unedited. As the AI-use guidance anticipates, tool "
         "output and the model's internal reasoning are omitted, and each tool call is listed by name. "
         "Background-task notifications and automatic app messages are shown as quoted markers so the "
@@ -207,6 +208,9 @@ def main():
     ap.add_argument("--tag", required=True, help="Q1-Q4, multiQ or general")
     ap.add_argument("--topic", required=True, help="a couple of words, underscore-separated")
     ap.add_argument("--outdir", default="ai_logs")
+    ap.add_argument("--title", help="session title, if the session record has none")
+    ap.add_argument("--surface", default=SURFACE_DEFAULT,
+                    help="where the session ran, e.g. 'Claude Code on the web (remote environment)'")
     args = ap.parse_args()
 
     path = args.session if args.session.endswith(".jsonl") else \
@@ -214,7 +218,7 @@ def main():
     if not path or not os.path.isfile(path):
         sys.exit("session not found: %s" % args.session)
 
-    md, start = convert(path)
+    md, start = convert(path, args.title, args.surface)
     os.makedirs(args.outdir, exist_ok=True)
     out = os.path.join(args.outdir, "%s_%s_%s.md" % (start.strftime("%Y-%m-%d_%H%M"), args.tag, args.topic))
     with open(out, "w", encoding="utf-8") as f:
