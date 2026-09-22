@@ -151,7 +151,7 @@ def main():
         "Hello. I'm handing over the analysis behind the IR team's estimates of how the market "
         "will react to our three upcoming readouts. My position: it's fit to inform those "
         "estimates, but not to produce a headline number, and it's far stronger on the downside "
-        "than the upside. I'll cover what it supports, where it shouldn't be relied on, how it "
+        "than the upside. I'll cover what it supports, where it shouldn't be, how it "
         "was produced, and how I checked it."
     )
 
@@ -167,7 +167,7 @@ def main():
     para(tf, "Strong on the downside.", 21, INK, bold=True, first=True, space_after=4)
     para(tf, "R² = 0.31 within negative readouts", 15, MUTED, space_after=16)
     para(tf, "Weak on the upside.", 21, FLAG, bold=True, space_after=4)
-    para(tf, "R² = 0.05 within positive readouts — use history, not the model",
+    para(tf, "R² = 0.03 within positive readouts — use history, not the model",
          15, MUTED, space_after=16)
     para(tf, "Not a forecast, a ranking.", 21, INK, bold=True, space_after=4)
     para(tf, "Typical error on a single event is about 21 percentage points",
@@ -184,28 +184,28 @@ def main():
         heading="Three things I'd\nstand behind",
         blocks=[
             ("The ordering is reliable.",
-             "Negative vs positive separated by 15–25 points of central estimate, "
+             "Negative vs positive separated by 16–27 points of central estimate, "
              "for all three assets, and it survives every seed."),
             ("ASC-204's downside is well evidenced.",
-             "274-trial cardiovascular and renal cluster · 247 in the same therapeutic "
-             "area · 39 negative readouts behind the distribution."),
+             "266-trial cardiovascular and renal cluster · 246 in the same therapeutic "
+             "area · 34 negative readouts behind the distribution."),
             ("It ranks severity.",
-             "Worst-ranked decile: 60% fell more than 10%, 43% more than 25%. "
-             "AUC 0.77 for a fall beyond 25%."),
+             "Worst-ranked decile: 61% fell more than 10%, 43% more than 25%. "
+             "AUC 0.78 for a fall beyond 25%."),
         ],
         notes=(
             "[0:28 — ~53s]\n\n"
             "Three things I'd stand behind.\n\n"
             "First, the ordering. For all three assets a negative readout is materially worse "
-            "than a positive one, by fifteen to twenty-five points of central estimate, and that "
+            "than a positive one, by sixteen to twenty-seven points of central estimate, and that "
             "survives every seed I ran.\n\n"
-            "Second, the downside for ASC-204. It sits in a cluster of 274 cardiovascular and "
-            "renal outcome trials, 247 in the same therapeutic area, with 39 negative readouts "
+            "Second, the downside for ASC-204. It sits in a cluster of 266 cardiovascular and "
+            "renal outcome trials, 246 in the same therapeutic area, with 34 negative readouts "
             "behind the distribution. That's the estimate I'd let the funding decision rest on.\n\n"
             "[CUT IF LONG] Third, ranking severity. Of the announcements the model puts in its "
-            "worst decile, 60 per cent fell more than ten per cent and 43 per cent fell more than "
-            "twenty-five. It sorts readouts into 'could be severe' and 'probably won't be'. "
-            "It won't tell you a stock moves fourteen per cent."
+            "worst decile, 61 per cent fell more than ten per cent and 43 per cent fell more than "
+            "twenty-five. It sorts readouts into 'could be severe' and 'probably won't be' — "
+            "not into a number."
         ),
     )
 
@@ -220,11 +220,11 @@ def main():
              "trials on design because disease was unmatchable — a Phase 3 base rate, "
              "and it must be labelled as one."),
             ("The upside is close to unmodelled.",
-             "R² ≈ 0.05 within positives, ~0 with the features Asclepius can supply. "
+             "R² ≈ 0.03 within positives, ~0 with the features Asclepius can supply. "
              "Quote the comparable-set range instead."),
-            ("Asclepius has no price history here.",
-             "Volatility did most of the work in sizing a bad outcome. Bands are ~68 points "
-             "wide — correctly wide, not a gap more modelling closes."),
+            ("The dataset supplies no price series for ASCL.",
+             "A gap in the data, not a fact about the company. Volatility did most of the work "
+             "in sizing a bad outcome, so bands are ~69 points wide — correctly wide."),
         ],
         notes=(
             "[1:21 — ~57s]\n\n"
@@ -234,12 +234,13 @@ def main():
             "because it couldn't match on disease. That number is a Phase 3 base rate wearing a "
             "comparable set's clothes, and should be presented that way.\n\n"
             "The upside is close to unmodelled. Within positive readouts the model explains about "
-            "five per cent of the spread, and effectively nothing once I'm limited to what "
+            "three per cent of the spread, and effectively nothing once I'm limited to what "
             "Asclepius can supply. For an upside case, quote the historical range, not a model "
             "output.\n\n"
-            "And Asclepius has no price history in this database. Volatility is most of what let "
-            "the model size a bad outcome, so the bands are wide — about 68 points. That width is "
-            "correct, not a gap more modelling closes."
+            "And the dataset supplies no price series for Asclepius — a gap in the data, not a "
+            "fact about the company. Volatility is most of what let the model size a bad outcome, "
+            "so the bands are about 69 points wide. That width is correct, not something more "
+            "modelling closes."
         ),
         accent=FLAG,
     )
@@ -285,13 +286,13 @@ def main():
         heading="What I examined,\nand what it changed",
         blocks=[
             ("Leakage audit before anything was fitted.",
-             "R² 0.21 → 0.96 with the nine excluded columns put back."),
+             "R² 0.20 → 0.96 with the nine excluded columns put back."),
             ("My own quality index was leaking.",
-             "+0.086 R², traced to one signal built from the realised return — the leakage "
+             "+0.14 R², traced to one signal built from the realised return — the leakage "
              "that survives review, because the name gives nothing away."),
             ("Validated against honest nulls.",
              "Permuted features · bootstrap by filing, not by row · forward chaining takes "
-             "R² from 0.20 to 0.16 — what the pipeline can deliver."),
+             "R² from 0.20 to 0.17 — what the pipeline can deliver."),
             ("I corrected my own earlier claim.",
              "I had told the team the range width was mainly the unknown result. "
              "It is about a quarter."),
@@ -301,15 +302,15 @@ def main():
             "[3:10 — ~53s]\n\n"
             "On checking, three things I'd point you at.\n\n"
             "I ran a leakage audit before fitting anything. With the nine excluded columns put "
-            "back, R-squared goes from 0.21 to 0.96. The one that mattered was my own "
-            "data-quality index — it lifted R-squared by 0.086, until I traced it to one signal "
-            "built from the realised return. That's the leakage that survives review: it looks "
-            "legitimate, and the name gives nothing away.\n\n"
+            "back, R-squared goes from 0.20 to 0.96. The one that mattered was my own "
+            "data-quality index — it lifted R-squared by 0.14, until I traced it to one signal "
+            "built from the realised return. That's the leakage that survives review — the name "
+            "gives nothing away.\n\n"
             "[CUT IF LONG] I validated against honest nulls — permuted features for the "
             "clustering, bootstrap by filing rather than by row, and forward chaining, which "
-            "drops R-squared from 0.20 to 0.16. That's what the pipeline can deliver.\n\n"
-            "And I corrected my own claims: I'd told the team the range width was mainly not "
-            "knowing the result. It's about a quarter."
+            "drops R-squared from 0.20 to 0.17. That's what the pipeline can deliver.\n\n"
+            "And I corrected my own claims: I'd told the team the range width was mainly the "
+            "unknown result. It's about a quarter."
         ),
     )
 
