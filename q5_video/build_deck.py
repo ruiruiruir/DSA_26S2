@@ -147,15 +147,47 @@ def main():
              "and ASC-370 readouts", 17, INK, space_after=18, line_spacing=1.15)
     para(tf, "Member ID: [INSERT]", 14, MUTED, space_after=0)
     s.notes_slide.notes_text_frame.text = (
-        "[0:00 — ~28s]\n\n"
+        "[0:00 — ~19s]\n\n"
         "Hello. I'm handing over the analysis behind the IR team's estimates of how the market "
         "will react to our three upcoming readouts. My position: it's fit to inform those "
         "estimates, but not to produce a headline number, and it's far stronger on the downside "
-        "than the upside. I'll cover what it supports, where it shouldn't be, how it "
-        "was produced, and how I checked it."
+        "than the upside."
     )
 
-    # ---- 2. the verdict --------------------------------------------------
+    # ---- 2. what I built -------------------------------------------------
+    content_slide(
+        prs,
+        kicker="what I built",
+        heading="Four stages",
+        blocks=[
+            ("Validated the outcome labels.",
+             "30 filings read by hand \u00b7 all 2,392 directional labels checked against the "
+             "realised move \u00b7 a screen over all 4,539 classifications flags 40%, mostly "
+             "timing rather than wrong labels."),
+            ("Grouped 1,975 readouts into eight families.",
+             "Disease, design, stage and sponsor \u2014 to find comparables for each readout."),
+            ("Modelled the three-day abnormal return.",
+             "Trial, text and company features, scored on held-out announcements. Explains 20%."),
+            ("Applied it to the three readouts.",
+             "Three scenarios each, plus a validation, monitoring and refresh plan."),
+        ],
+        lead_pt=18, body_pt=14, gap_pt=12,
+        notes=(
+            "[0:19 \u2014 ~43s]\n\n"
+            "Four stages.\n\n"
+            "I validated the LLM's outcome labels \u2014 thirty filings read by hand against the "
+            "original 8-Ks, then all 2,392 directional labels checked against the price move that "
+            "followed. That gave a screen scoring all 4,539 classifications, which flags forty per "
+            "cent, mostly for timing rather than a wrong label.\n\n"
+            "I grouped 1,975 historical readouts into eight families, on disease, design, stage and "
+            "sponsor, to find comparables.\n\n"
+            "I modelled the three-day abnormal return from trial, text and company features; it "
+            "explains twenty per cent of the variation.\n\n"
+            "Then I applied that to our three readouts, three scenarios each, with a monitoring plan."
+        ),
+    )
+
+    # ---- 3. the verdict --------------------------------------------------
     s = add_slide(prs)
     video_panel(s)
     tf = textbox(s, TXT_L, Inches(0.75), TXT_W, Inches(1.5))
@@ -173,11 +205,12 @@ def main():
     para(tf, "Typical error on a single event is about 21 percentage points",
          15, MUTED, space_after=0)
     s.notes_slide.notes_text_frame.text = (
-        "Hold this slide through the opening if you prefer a single frame while you set up "
-        "the argument. Otherwise move here on 'far stronger on the downside than the upside'."
+        "No script of its own — this frame carries the verdict while you move from what you "
+        "built into the evidence for it. Land on it as you say 'so, three things I'd stand "
+        "behind', then advance."
     )
 
-    # ---- 3. what it supports --------------------------------------------
+    # ---- 4. what it supports --------------------------------------------
     content_slide(
         prs,
         kicker="what the analysis supports",
@@ -194,22 +227,21 @@ def main():
              "AUC 0.78 for a fall beyond 25%."),
         ],
         notes=(
-            "[0:28 — ~53s]\n\n"
-            "Three things I'd stand behind.\n\n"
-            "First, the ordering. For all three assets a negative readout is materially worse "
-            "than a positive one, by sixteen to twenty-seven points of central estimate, and that "
-            "survives every seed I ran.\n\n"
-            "Second, the downside for ASC-204. It sits in a cluster of 266 cardiovascular and "
-            "renal outcome trials, 246 in the same therapeutic area, with 34 negative readouts "
-            "behind the distribution. That's the estimate I'd let the funding decision rest on.\n\n"
-            "[CUT IF LONG] Third, ranking severity. Of the announcements the model puts in its "
-            "worst decile, 61 per cent fell more than ten per cent and 43 per cent fell more than "
-            "twenty-five. It sorts readouts into 'could be severe' and 'probably won't be' — "
-            "not into a number."
+            "[1:02 — ~45s]\n\n"
+            "So, three things I'd stand behind.\n\n"
+            "The ordering. For all three assets a negative readout is materially worse than a "
+            "positive one, by sixteen to twenty-seven points of central estimate, and that "
+            "survives every seed.\n\n"
+            "The downside for ASC-204. It sits in a cluster of 266 cardiovascular and renal "
+            "outcome trials, 246 in the same therapeutic area, with 34 negative readouts behind "
+            "it. That's the estimate I'd let the funding decision rest on.\n\n"
+            "[CUT IF LONG] And severity ranking: 61 per cent of the announcements in the model's "
+            "worst decile fell more than ten per cent. It sorts readouts into 'could be severe' "
+            "and 'probably won't be', not into a number."
         ),
     )
 
-    # ---- 4. where it should not be relied on -----------------------------
+    # ---- 5. where it should not be relied on -----------------------------
     content_slide(
         prs,
         kicker="where it should not be relied upon",
@@ -227,25 +259,23 @@ def main():
              "in sizing a bad outcome, so bands are ~69 points wide — correctly wide."),
         ],
         notes=(
-            "[1:21 — ~57s]\n\n"
+            "[1:47 — ~52s]\n\n"
             "Now the limits, and they're real.\n\n"
             "ASC-101 has effectively no comparables. The dataset holds seven hereditary "
-            "angioedema readouts in total, so my method matched it on design, to vaccine trials, "
-            "because it couldn't match on disease. That number is a Phase 3 base rate wearing a "
-            "comparable set's clothes, and should be presented that way.\n\n"
-            "The upside is close to unmodelled. Within positive readouts the model explains about "
-            "three per cent of the spread, and effectively nothing once I'm limited to what "
-            "Asclepius can supply. For an upside case, quote the historical range, not a model "
-            "output.\n\n"
+            "angioedema readouts in total, so my method matched it to vaccine trials on design, "
+            "having nothing to match on disease. That number is a Phase 3 base rate wearing a "
+            "comparable set's clothes.\n\n"
+            "The upside is close to unmodelled — three per cent of the spread within positive "
+            "readouts, and effectively nothing with the features Asclepius can supply. For an "
+            "upside case, quote the historical range.\n\n"
             "And the dataset supplies no price series for Asclepius — a gap in the data, not a "
             "fact about the company. Volatility is most of what let the model size a bad outcome, "
-            "so the bands are about 69 points wide. That width is correct, not something more "
-            "modelling closes."
+            "so the bands are about 69 points wide, and correctly so."
         ),
         accent=FLAG,
     )
 
-    # ---- 5. how the work was produced ------------------------------------
+    # ---- 6. how the work was produced ------------------------------------
     content_slide(
         prs,
         kicker="how the work was produced",
@@ -262,14 +292,14 @@ def main():
              "primary endpoint and is rescued by a subgroup — that is mixed-negative."),
         ],
         notes=(
-            "[2:18 — ~52s]\n\n"
+            "[2:39 — ~47s]\n\n"
             "I used Claude, through Claude Code, heavily and throughout — to write and debug the "
-            "code, to pull result sentences out of the filings so I could read them, and to draft "
-            "commentary I then rewrote. The full conversations are in the submitted log.\n\n"
-            "What I didn't delegate was the judgement. I set the constraints: no feature that "
-            "wasn't observable before the event, and the illustrative announcement drafts excluded "
-            "entirely, because they were written to express the assumed outcome. The thirty "
-            "filings I read against the original 8-Ks are my reading, not its summary.\n\n"
+            "code, to surface result sentences from the filings for me to read, and to draft "
+            "commentary I rewrote. The full conversations are in the submitted log.\n\n"
+            "What I didn't delegate was the judgement. I set the constraints: no feature "
+            "unobservable before the event, and the announcement drafts excluded entirely, "
+            "because they were written to express the assumed outcome. The thirty filings are my "
+            "reading, not its summary.\n\n"
             "And I corrected it. It mapped all three mixed scenarios to mixed-positive; I read the "
             "ASC-204 draft, saw a missed primary endpoint rescued by a subgroup, and moved it to "
             "mixed-negative.\n\n"
@@ -279,7 +309,7 @@ def main():
         ),
     )
 
-    # ---- 6. how I checked it ---------------------------------------------
+    # ---- 7. how I checked it ---------------------------------------------
     content_slide(
         prs,
         kicker="how I satisfied myself it is sound",
@@ -299,22 +329,21 @@ def main():
         ],
         lead_pt=18, body_pt=14, gap_pt=12,
         notes=(
-            "[3:10 — ~53s]\n\n"
-            "On checking, three things I'd point you at.\n\n"
-            "I ran a leakage audit before fitting anything. With the nine excluded columns put "
-            "back, R-squared goes from 0.20 to 0.96. The one that mattered was my own "
-            "data-quality index — it lifted R-squared by 0.14, until I traced it to one signal "
-            "built from the realised return. That's the leakage that survives review — the name "
-            "gives nothing away.\n\n"
-            "[CUT IF LONG] I validated against honest nulls — permuted features for the "
-            "clustering, bootstrap by filing rather than by row, and forward chaining, which "
-            "drops R-squared from 0.20 to 0.17. That's what the pipeline can deliver.\n\n"
+            "[3:26 — ~45s]\n\n"
+            "On checking. I ran a leakage audit before fitting anything: with the nine excluded "
+            "columns put back, R-squared goes from 0.20 to 0.96. The one that mattered was my own "
+            "data-quality index — worth 0.14, until I traced it to one signal built from the "
+            "realised return. That's the leakage that survives review; the name gives nothing "
+            "away.\n\n"
+            "[CUT IF LONG] I validated against honest nulls — permuted features, bootstrap by "
+            "filing rather than by row, and forward chaining, which drops R-squared to 0.17. "
+            "That's what the pipeline can deliver.\n\n"
             "And I corrected my own claims: I'd told the team the range width was mainly the "
             "unknown result. It's about a quarter."
         ),
     )
 
-    # ---- 7. PG1 and close -------------------------------------------------
+    # ---- 8. PG1 and close -------------------------------------------------
     s = add_slide(prs)
     video_panel(s)
     tf = textbox(s, TXT_L, Inches(0.75), TXT_W, Inches(1.5))
@@ -332,14 +361,14 @@ def main():
     para(tf, "2.  Whether the ASC-101 estimate should go in front of the board at all.",
          17, INK, space_after=0, line_spacing=1.15)
     s.notes_slide.notes_text_frame.text = (
-        "[4:03 — ~31s]\n\n"
+        "[4:11 — ~29s]\n\n"
         "Under PG1 I'm responsible for the judgements here regardless of what produced the first "
         "draft of them — which means understanding the model before relying on it, and judging "
-        "whether its assumptions suit the purpose. That's what I've tried to do.\n\n"
+        "whether its assumptions suit the purpose.\n\n"
         "If your time is limited, I'd put it on two things: my decision to exclude the "
         "announcement drafts, and whether the ASC-101 estimate should go in front of the board at "
         "all. Thank you.\n\n"
-        "END — target 4:30, limit 5:00."
+        "END — target 4:40, limit 5:00."
     )
 
     prs.save("Q5_handover_deck.pptx")

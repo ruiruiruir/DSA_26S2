@@ -1,9 +1,9 @@
 # Question 5 — video handover script
 
-**Target length:** 654 words — about **4:30** at a measured 145 words per minute (4:12 if you speak
-briskly, 4:50 if you are slow and deliberate). The limit is 3–5 minutes and markers stop watching at
-5:00, so time a practice run: if it comes out over **4:40**, drop the two passages marked
-*[cut if long]* below, which take it to roughly 4:00. Do not speed the recording up to fit.
+**Target length:** 675 words — about **4:40** at a measured 145 words per minute. The limit is 3–5
+minutes and markers stop watching at 5:00, so time a practice run: if it comes out **over 4:30**,
+drop the two passages marked *[cut if long]*, which bring it to 611 words, about **4:15**. Do not
+speed the recording up to fit.
 
 **Rubric warning:** one of the hurdles is *"does not appear to be reading word for word from a
 script."* Use this to learn the argument and the numbers, then present from the cue cards at the end
@@ -18,76 +18,86 @@ video, the notebook and the AI logs have to tell one story.
 
 ## The script
 
-**[0:00 — Opening, ~27s]**
+**[0:00 — Opening, ~19s]**
 
 Hello. I'm handing over the analysis behind the IR team's estimates of how the market will react to
 our three upcoming readouts. My position: it's fit to inform those estimates, but not to produce a
-headline number, and it's far stronger on the downside than the upside. I'll cover what it supports, where it
-shouldn't be, how it was produced, and how I checked it.
+headline number, and it's far stronger on the downside than the upside.
 
-**[0:27 — What the analysis supports, ~51s]**
+**[0:19 — What I built, ~43s]**
 
-Three things I'd stand behind.
+Four stages.
 
-First, the ordering. For all three assets a negative readout is materially worse than a positive one,
-by sixteen to twenty-seven points of central estimate, and that survives every seed I ran.
+I validated the LLM's outcome labels — thirty filings read by hand against the original 8-Ks, then
+all 2,392 directional labels checked against the price move that followed. That gave a screen scoring
+all 4,539 classifications, which flags forty per cent, mostly for timing rather than a wrong label.
 
-Second, the downside for ASC-204. It sits in a cluster of 266 cardiovascular and renal outcome
-trials, 246 in the same therapeutic area, with 34 negative readouts behind the distribution. That's
-the estimate I'd let the funding decision rest on.
+I grouped 1,975 historical readouts into eight families, on disease, design, stage and sponsor, to
+find comparables.
 
- Third, ranking severity. Of the announcements the model puts in its worst decile, 61 per cent fell
-more than ten per cent and 43 per cent fell more than twenty-five. It sorts readouts into "could be
-severe" and "probably won't be" — not into a number.
+I modelled the three-day abnormal return from trial, text and company features; it explains twenty
+per cent of the variation.
 
-**[1:18 — Where it should not be relied on, ~61s]**
+Then I applied that to our three readouts, three scenarios each, with a monitoring plan.
+
+**[1:02 — What it supports, ~45s]**
+
+So, three things I'd stand behind.
+
+The ordering. For all three assets a negative readout is materially worse than a positive one, by
+sixteen to twenty-seven points of central estimate, and that survives every seed.
+
+The downside for ASC-204. It sits in a cluster of 266 cardiovascular and renal outcome trials, 246 in
+the same therapeutic area, with 34 negative readouts behind it. That's the estimate I'd let the
+funding decision rest on.
+
+*[cut if long]* And severity ranking: 61 per cent of the announcements in the model's worst decile
+fell more than ten per cent. It sorts readouts into "could be severe" and "probably won't be", not
+into a number.
+
+**[1:47 — Where it should not be relied on, ~52s]**
 
 Now the limits, and they're real.
 
 ASC-101 has effectively no comparables. The dataset holds seven hereditary angioedema readouts in
-total, so my method matched it to vaccine trials on design, because it couldn't match on disease.
-That number is a Phase 3 base rate wearing a comparable set's clothes, and should be presented that
-way.
+total, so my method matched it to vaccine trials on design, having nothing to match on disease. That
+number is a Phase 3 base rate wearing a comparable set's clothes.
 
-The upside is close to unmodelled. Within positive readouts the model explains about three per cent of
-the spread, and effectively nothing once I'm limited to what Asclepius can supply. For an upside
-case, quote the historical range, not a model output.
+The upside is close to unmodelled — three per cent of the spread within positive readouts, and
+effectively nothing with the features Asclepius can supply. For an upside case, quote the historical
+range.
 
 And the dataset supplies no price series for Asclepius — a gap in the data, not a fact about the
 company. Volatility is most of what let the model size a bad outcome, so the bands are about 69
-points wide. That width is correct, not something more modelling closes.
+points wide, and correctly so.
 
-**[2:19 — How the work was produced, ~52s]**
+**[2:39 — How the work was produced, ~47s]**
 
-I used Claude, through Claude Code, heavily and throughout — to write and debug the code, to pull
-result sentences out of the filings so I could read them, and to draft commentary I then rewrote.
-The full conversations are in the submitted log.
+I used Claude, through Claude Code, heavily and throughout — to write and debug the code, to surface
+result sentences from the filings for me to read, and to draft commentary I rewrote. The full
+conversations are in the submitted log.
 
-What I didn't delegate was the judgement. I set the constraints: no feature that wasn't observable
-before the event, and the illustrative announcement drafts excluded entirely, because they were
-written to express the assumed outcome. The thirty filings I read against the original 8-Ks are my
-reading, not its summary.
+What I didn't delegate was the judgement. I set the constraints: no feature unobservable before the
+event, and the announcement drafts excluded entirely, because they were written to express the
+assumed outcome. The thirty filings are my reading, not its summary.
 
 And I corrected it. It mapped all three mixed scenarios to mixed-positive; I read the ASC-204 draft,
 saw a missed primary endpoint rescued by a subgroup, and moved it to mixed-negative.
 
-**[3:10 — How I satisfied myself it's sound, ~51s]**
+**[3:26 — How I satisfied myself it's sound, ~45s]**
 
-On checking, three things I'd point you at.
+On checking. I ran a leakage audit before fitting anything: with the nine excluded columns put back,
+R-squared goes from 0.20 to 0.96. The one that mattered was my own data-quality index — worth 0.14,
+until I traced it to one signal built from the realised return. That's the leakage that survives
+review; the name gives nothing away.
 
-I ran a leakage audit before fitting anything. With the nine excluded columns put back, R-squared goes
-from 0.20 to 0.96. The one that mattered was my own data-quality index — it lifted R-squared by
-0.14, until I traced it to one signal built from the realised return. That's the leakage that
-survives review — the name gives nothing away.
+*[cut if long]* I validated against honest nulls — permuted features, bootstrap by filing rather than
+by row, and forward chaining, which drops R-squared to 0.17. That's what the pipeline can deliver.
 
- I validated against honest nulls — permuted features for the clustering, bootstrap by filing rather
-than by row, and forward chaining, which drops R-squared from 0.20 to 0.17. That's what the pipeline
-can deliver.
+And I corrected my own claims: I'd told the team the range width was mainly the unknown result. It's
+about a quarter.
 
-And I corrected my own claims: I'd told the team the range width was mainly the unknown result.
-It's about a quarter.
-
-**[4:02 — PG1 and close, ~29s]**
+**[4:11 — PG1 and close, ~29s]**
 
 Under PG1 I'm responsible for the judgements here regardless of what produced the first draft of
 them — which means understanding the model before relying on it, and judging whether its assumptions
@@ -104,29 +114,36 @@ and whether the ASC-101 estimate should go in front of the board at all. Thank y
 - Handover: estimates of market reaction to three readouts
 - Verdict: fit to *inform*, not to produce a headline number; strong downside, weak upside
 
-**2. What it supports**
+**2. What I built — four stages**
+- Validated the labels — 30 filings read by hand, 2,392 directional labels vs the realised move;
+  screen over all 4,539 classifications flags 40%, mostly timing not wrong labels
+- Grouped 1,975 readouts into 8 families (disease, design, stage, sponsor) → comparables
+- Modelled the 3-day abnormal return (trial + text + company) → explains 20%
+- Applied it to the three readouts, 3 scenarios each, plus a monitoring plan
+
+**3. What it supports**
 - Ordering — negative vs positive, 16–27 pts, survives every seed
 - ASC-204 — 266-trial cluster, 246 same area, 34 negative readouts → lean on this one
 - Ranking severity — worst decile: 61% fell >10%, 43% fell >25%
 
-**3. Where it should not be relied on**
+**4. Where it should not be relied on**
 - ASC-101 — 7 HAE readouts in the whole dataset; matched to vaccines on design, not disease
 - Upside — R² ≈ 0.03 within positives, ~0 with available features → quote history instead
 - No ASCL price series in the dataset → bands ~69 pts wide, and correctly so
 
-**4. How it was produced**
+**5. How it was produced**
 - Claude / Claude Code, heavily, throughout — code, excerpts, draft commentary. Logs submitted.
 - Mine: the constraints (no look-ahead features; drafts excluded as circular), the 30 filings read
 - Corrected it: mixed-scenario mapping (ASC-204 → mixed-negative); hard-coded cluster number;
   split the ablation
 
-**5. How I checked it**
+**6. How I checked it**
 - Leakage audit: 0.20 → 0.96 with the excluded columns back in
 - My own risk index leaked +0.14 — traced to one signal built from the realised return
 - Honest nulls: permuted features, bootstrap by filing, forward chaining 0.20 → 0.17
 - Corrected my own Q3d claim on what drives the range width
 
-**6. PG1 and close**
+**7. PG1 and close**
 - Responsible for the judgements regardless of what drafted them first
 - Two things to review: excluding the drafts; whether ASC-101 goes in front of the board at all
 
@@ -137,10 +154,12 @@ and whether the ASC-101 estimate should go in front of the board at all. Thank y
 - Upper-body shot, camera at eye level, look at the lens not the screen.
 - Say the numbers slowly — they are the evidence the rubric rewards, and they are the easiest thing
   to lose to a rushed delivery.
-- Pause between the six sections; those pauses are the transitions the video guidance asks for.
+- Pause between the seven sections; those pauses are the transitions the video guidance asks for.
 - Practise once with a timer, then check against the two *[cut if long]* passages. Dropping both
-  takes roughly 30 seconds out without losing a rubric point: each of the three required topics
-  still has its own section and its own evidence.
+  takes about 25 seconds out without losing a rubric point: each of the three required topics still
+  has its own section and its own evidence.
+- The "what I built" section is orientation, not the answer — keep it moving. The reviewer has not
+  seen the work, but the marks are in the three sections after it.
 - If you run *short* (under 3:30), the safest thing to add back is ASC-370: its cluster average is
   unusable — 15 same-area trials out of 388, and that group under-reports failure — but its nearest
   neighbours are genuine gene-therapy readouts, so read it case by case.

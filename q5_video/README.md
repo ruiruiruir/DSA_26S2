@@ -4,8 +4,8 @@ Three files:
 
 | File | What it is |
 |---|---|
-| `Q5_speech.md` | The script (660 words, ~4:30), cue cards to present from, and delivery notes |
-| `Q5_handover_deck.pptx` | 7 slides, 16:9, with a reserved panel for your video on every slide |
+| `Q5_speech.md` | The script (675 words, ~4:40), cue cards to present from, and delivery notes |
+| `Q5_handover_deck.pptx` | 8 slides, 16:9, with a reserved panel for your video on every slide |
 | `build_deck.py` | Regenerates the deck — edit the text here rather than in PowerPoint if you want the change kept |
 
 ## The video panel
@@ -36,9 +36,14 @@ gives you the cue cards without you reading from a second screen.
 
 ## Timing
 
-660 words, about 4:30 at a measured pace. The hurdle is 3–5 minutes and markers stop at 5:00. Time a
-practice run; if it lands over 4:40, drop the two passages marked *[cut if long]*, which takes it to
-roughly 4:00. Do not speed the recording up — the video guidance rules that out explicitly.
+675 words, about 4:40 at a measured pace. The hurdle is 3–5 minutes and markers stop at 5:00. Time a
+practice run; if it lands over 4:30, drop the two passages marked *[cut if long]*, which takes it to
+about 4:15. Do not speed the recording up — the video guidance rules that out explicitly.
+
+The deck runs title → what I built → the verdict → what it supports → where it should not be relied
+on → how it was produced → how it was checked → PG1. The second slide is orientation for a reviewer
+who has not seen the work; it is about 43 seconds and it is the first thing to shorten if you are
+long, since the marks sit in the three sections after it.
 
 ## Two rubric hurdles worth re-reading before you record
 
