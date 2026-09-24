@@ -217,7 +217,7 @@ def main():
         heading="Three things I'd\nstand behind",
         blocks=[
             ("The ordering is reliable.",
-             "Negative vs positive separated by 16–27 points of central estimate, "
+             "Negative vs positive separated by 11–27 points of central estimate, "
              "for all three assets, and it survives every seed."),
             ("ASC-204's downside is well evidenced.",
              "266-trial cardiovascular and renal cluster · 246 in the same therapeutic "
@@ -230,7 +230,7 @@ def main():
             "[1:02 — ~45s]\n\n"
             "So, three things I'd stand behind.\n\n"
             "The ordering. For all three assets a negative readout is materially worse than a "
-            "positive one, by sixteen to twenty-seven points of central estimate, and that "
+            "positive one, by eleven to twenty-seven points of central estimate, and that "
             "survives every seed.\n\n"
             "The downside for ASC-204. It sits in a cluster of 266 cardiovascular and renal "
             "outcome trials, 246 in the same therapeutic area, with 34 negative readouts behind "

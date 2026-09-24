@@ -45,7 +45,7 @@ Then I applied that to our three readouts, three scenarios each, with a monitori
 So, three things I'd stand behind.
 
 The ordering. For all three assets a negative readout is materially worse than a positive one, by
-sixteen to twenty-seven points of central estimate, and that survives every seed.
+eleven to twenty-seven points of central estimate, and that survives every seed.
 
 The downside for ASC-204. It sits in a cluster of 266 cardiovascular and renal outcome trials, 246 in
 the same therapeutic area, with 34 negative readouts behind it. That's the estimate I'd let the
@@ -122,7 +122,7 @@ and whether the ASC-101 estimate should go in front of the board at all. Thank y
 - Applied it to the three readouts, 3 scenarios each, plus a monitoring plan
 
 **3. What it supports**
-- Ordering — negative vs positive, 16–27 pts, survives every seed
+- Ordering — negative vs positive, 11–27 pts, survives every seed
 - ASC-204 — 266-trial cluster, 246 same area, 34 negative readouts → lean on this one
 - Ranking severity — worst decile: 61% fell >10%, 43% fell >25%
 
