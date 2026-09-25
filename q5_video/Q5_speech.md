@@ -58,7 +58,7 @@ into a number.
 
 **[1:47 — Where it should not be relied on, ~52s]**
 
-Now the limititations. 
+Now the limitations. 
 
 ASC-101 has effectively no comparables. The dataset holds seven hereditary angioedema readouts in
 total, so my method matched it to vaccine trials on design, having nothing to match on disease. That
